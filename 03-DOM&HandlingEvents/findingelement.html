@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>Finding elements</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Finding elements in DOM</h1>
+    <p id="someTest">Find an element by element id</p>
+    <p class="important">Find elements by class name</p>
+    <p>Find elements by tag name</p>
+    <script>
+        console.log(document.getElementById('someTest').innerHTML);
+        let imp = document.getElementsByClassName('important')
+        for ( var i = 0; i < imp.length; i++ ) {
+            console.log(imp[i].innerHTML)
+        };
+        let ps = document.getElementsByTagName('p');
+        for ( var i = 0; i < ps.length; i++ ) {
+            console.log(ps[i].innerHTML)
+        };
+    </script>
+</body>
+
+</html>
