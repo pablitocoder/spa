@@ -7,11 +7,20 @@
 	<body>
 		<h1>Student</h1>
 		<p>Open a console and then click the button</p>
-		<input type="button" value="Display student's data">
+		<input type="button" value="Display student's data", onclick='show_data()'>
 		<p id="personalData"></p>
 
-		<script>
-
+		<script type="text/javascript">
+			function show_data(){
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					var json_data = JSON.parse(xhr.responseText);
+					document.getElementById("personalData").innerHTML = json_data.name + " " + json_data.surname;
+					}
+			}
+			xhr.open("GET", "personal_data.json");
+			xhr.send();
+			};
 		</script>
 
 	</body>

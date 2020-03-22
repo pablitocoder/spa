@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<div align="center">
+			<h4>PERSONAL DATA</h4>
+			<input type="button" value="Show me, show show me" onclick="show_data()" >
+			<p id="personalData"></p>
+		</div>
+
+		<script type="text/javascript">
+			function show_data() {
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState == 4 && xhr.status == 200) {
+						var json_data = JSON.parse(xhr.responseText);
+						for (i=1; i<=json_data.length; i++){
+							var text = "</br>"+ i.toString() + ". " + json_data[i-1].name + " " + json_data[i-1].surname.toUpperCase() + ", " + json_data[i-1].country;
+							document.getElementById("personalData").innerHTML += text ;
+						}   
+					} 
+				}  
+				xhr.open("GET", "people.json");
+				xhr.send();
+			}
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Currency Exchange Rates</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<div align='center'>
+		<h2> Bieżące kursy walut </h2>
+		<h4 id="main"></h4>
+		</div>
+		
+		<script type="text/javascript">
+		var links = [
+        'https://api.nbp.pl/api/exchangerates/rates/c/usd/?format=json',
+        'https://api.nbp.pl/api/exchangerates/rates/c/eur/?format=json',
+        'https://api.nbp.pl/api/exchangerates/rates/c/gbp/?format=json'
+		];
+		
+		for (i=0;i<links.length;i++){
+			load_data(links[i]);
+			}
+
+        function load_data(url) {
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					var json_data = JSON.parse(xhr.responseText);
+					var text = json_data.code + "</br>" + "sprzedaż: " + json_data.rates[0].ask + "</br>" + "kupno: " + json_data.rates[0].bid + "</br>";
+					document.getElementById("main").innerHTML += text
+				}
+			}
+			xhr.open("GET", url);
+			xhr.send();
+        }
+		
+		</script>
+
+	</body>
+</html>

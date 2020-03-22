@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>CANVAS CHART</title>
+<meta charset="UTF-8">
+
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+
+<body>
+
+<div id="chartContainer" style="height: 100%; width: 100%;"></div>
+
+<script type='text/javascript'>
+window.onload = function() {
+	var chart_data = [];
+
+	var chart = new CanvasJS.Chart("chartContainer", {
+		animationEnabled: true,
+		theme: "dark1",
+		title: {
+			text: "LAST 10 GOLD QUOTATIONS (WESTERN)"
+		},
+		axisX: {
+			title: "DATE"
+		
+		},
+		axisY: {
+			title: "PRICE (zł)",
+		},
+
+		data: [{
+			type: "scatter",
+			dataPoints: chart_data,
+			markerSize:70
+			yValueFormatString: "###.## zł",
+		}]
+	});
+
+	function loadData(prices) {
+		for (var i = 0; i < prices.length; i++) {
+			if (prices[i].cena > 0) {
+				chart_data.push({
+					x: new Date(prices[i].data),
+					y: prices[i].cena
+				})
+			}
+		}
+		chart.render();
+	}
+
+	$.getJSON("https://api.nbp.pl/api/cenyzlota/last/10/?format=json", loadData);
+}
+</script>
+
+</body>
+</html>
