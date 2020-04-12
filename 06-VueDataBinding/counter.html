@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="counter">
+    <button v-on:click="n += 1" style='font-size:50px;' ><b>{{n}}</b></button>
+</div>    
+
+  <script>
+    var app = new Vue({
+        el: '#counter',
+        data: {
+            n: 0
+        }
+    })
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <span>Tytuł: </span>
+    <input type="text" v-model="title">  
+    
+	<span>Autor: </span>
+    <input type="text" v-model="author"> 
+  </div>
+  
+  <div>
+	<button v-on:click="print">zapisz</button> 
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        title: '',
+        author: ''
+      },
+      methods: {
+          print: function ($event) {
+              console.log(`Tytuł: ${app.title} | Autor: ${app.author}`)
+          }
+      }
+    });
+  </script>
+
+</body>
+</html>

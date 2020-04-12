@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  
+  
+	
+  <div id="app">
+  <h1>Przedmioty</h1>
+	<fieldset>
+		<h4>Wybrano {{ subjects.length }} przemiotów</h3>
+		<input type="checkbox" id="spa" value="spa" v-model="subjects"> SPA<br>
+		<input type="checkbox" id="ai" value="ai" v-model="subjects"> Programowanie Sztucznej Inteligencji<br>
+		<input type="checkbox" id="exp" value="exp" v-model="subjects"> Metody Eksploracji Danych<br>
+		<input type="checkbox" id="dt" value="dt" v-model="subjects"> Design Thinking <br>
+		<input type="checkbox" id="comarch" value="comarch" v-model="subjects"> Comarch BI <br>
+	</fieldset>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+          subjects: [] 
+      },
+    });
+  </script>
+
+</body>
+</html>

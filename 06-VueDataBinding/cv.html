@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<h3>FORMULARZ CV</h3>
+  <div id="app">
+
+    <p>Dane</p>
+    <span>Imię: </span> <input type="text" v-model="name"><br>
+    <span>Nazwisko: </span> <input type="text" v-model="surname"><br>
+	<span>Wiek: </span> <input type="number" v-model.number="age"><br>
+    <span>Płeć: </span> 
+		<input type="radio" id="male" value="male" v-model="gender"> Mężczyzna
+		<input type="radio" id="female" value="female" v-model="gender"> Kobieta <br>
+    <span>Wykształcenie:</span>
+    <select v-model="education">
+        <option>Brak</option>
+        <option>Podstawowe</option>
+        <option>Średnie</option>
+        <option>Wyższe</option>
+    </select></br>
+	
+    <p>Umiejętności:</p>
+    <input type="checkbox" id="compskills" v-model="compskills"> obsługa komputera <br>
+    <input type="checkbox" id="license" v-model="license"> prawo jazdy <br>
+    <input type="checkbox" id="creativity" v-model="creativity"> kreatywność <br>
+    <input type="checkbox" id="teamwork" v-model="teamwork"> praca w zespole <br>
+    <p> 
+		<button @click="saving">Zapisz</button>
+		<button @click="reading">Czytaj</button>
+	</p>
+
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        name: '',
+        surname: '',
+        age: '',
+        gender: '',
+        education: '',
+        compskills: '',
+		license: '',
+		creativity:'',
+		teamwork:''
+      },
+      mounted() {
+              this.name = localStorage.name;
+              this.surname = localStorage.surname;
+              this.age = localStorage.age;
+              this.gender = localStorage.gender;
+              this.education = localStorage.education;
+			  this.compskills = localStorage.compskills;
+			  this.license = localStorage.license;
+			  this.creativity = localStorage.creativity;
+			  this.teamwork = localStorage.teamwork;
+      },
+      methods: {
+        saving() {
+            localStorage.name = this.name;
+            localStorage.surname = this.surname;
+            localStorage.age = this.age;
+            localStorage.gender = this.gender;
+            localStorage.education = this.education;
+            localStorage.compskills = this.compskills;
+			localStorage.license = this.license;
+			localStorage.creativity = this.creativity;
+			localStorage.teamwork = this.teamwork;
+			
+        },
+        reading() {
+            return alert(`
+            Imie: ${localStorage.name}
+			Nazwisko: ${localStorage.surname}
+            Wiek: ${localStorage.age}
+			Płeć: ${localStorage.gender}
+            Wykształcenie: ${localStorage.education}
+			`);
+        }
+      }
+    });
+
+  </script>
+</body>
+</html>
