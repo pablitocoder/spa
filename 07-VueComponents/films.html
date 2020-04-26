@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+      <h1>BEST MOVEIS EVER</h1>
+    <movie1></movie1>
+    <movie2/></movie2>
+    <movie3/></movie3>
+  </div>
+<script>
+
+  Vue.component('movie1', {
+    template: `
+    <div>
+    <h1>1. Forrest Gump</h1>
+    <p>Robert Zemeckis, 1994</p>
+    </div>
+    `
+  });
+  Vue.component('movie2', {
+    template: `
+    <div>
+    <h1>2. Shawskank Redemption</h1>
+    <p>Frank Darabont, 1994</p>
+    </div>
+    `
+  });
+  Vue.component('movie3', {
+    template: `
+    <div>
+    <h1>3. Django</h1>
+    <p>Quentin Tarantino, 2012</p>
+    </div>
+    `
+  });
+
+
+  new Vue({el: "#app"});
+</script>
+</body>
+</html>

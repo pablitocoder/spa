@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>Konwersja Binarna</h1>
+    <div v-for='number in numbers'>
+        <binary :number="number"/>
+    </div> 
+  </div>
+<script>
+
+  Vue.component('binary', {
+      props:['number'],
+    template: `
+    <div >
+        <p>{{ number + ": " + binary() }}</p>
+    </div>
+    `,
+    methods: {
+        binary: function(){
+            return this.number.toString(2)
+        }
+    }
+  });
+  new Vue({el: "#app",
+  data: {
+      numbers:[8,170,204,3855]
+  }
+  });
+</script>
+</body>
+</html>

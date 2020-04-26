@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app" align="center">
+    <h1>Licznik</h1>
+    <counter/>
+    </div> 
+  </div>
+<script>
+
+  Vue.component('counter', {
+    template: `
+        <div>
+            <button @click=incrementing style='font-size:50px; color:green;'> + </button>
+            <button @click=decrementing style='font-size:50px; color:red;'> - </button>
+            <h1>{{number}}</h1>
+        </div>
+    `,
+    data: function() {
+          return {
+          number: 0
+        }
+    },
+    methods: {
+        incrementing: function() {
+            this.number = this.number +1
+        },
+        decrementing: function() {
+            this.number = this.number -1
+        }
+    },
+
+  });
+  new Vue({el: "#app"});
+</script>
+</body>
+</html>
